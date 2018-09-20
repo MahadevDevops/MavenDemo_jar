@@ -8,9 +8,18 @@ pipeline {
       }
     }
     stage('Build') {
-      steps {
-        echo 'Im in build stage'
-        sh 'mvn clean compile'
+      parallel {
+        stage('Build') {
+          steps {
+            echo 'Im in build stage'
+            sh 'mvn clean compile'
+          }
+        }
+        stage('Build1') {
+          steps {
+            sleep(time: 1, unit: 'MILLISECONDS')
+          }
+        }
       }
     }
     stage('Test') {
