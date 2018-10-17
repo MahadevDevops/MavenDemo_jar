@@ -15,4 +15,24 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+<build>
+    <extensions>
+        <extension>
+            <groupId>com.gkatzioura.maven.cloud</groupId>
+            <artifactId>s3-storage-wagon</artifactId>
+            <version>1.0</version>
+        </extension>
+    </extensions>
+</build>
+  <distributionManagement>
+    <snapshotRepository>
+        <id>my-repo-bucket-snapshot</id>
+        <url>s3://mycodebuildartifacts/myartifacts</url>
+    </snapshotRepository>
+    <repository>
+        <id>my-repo-bucket-release</id>
+        <url>s3://mycodebuildartifacts/release</url>
+    </repository>
+</distributionManagement>
 </project>
